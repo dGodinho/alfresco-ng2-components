@@ -16,6 +16,7 @@
  */
 
 var Util = require("../../util/util");
+var CardViewPage = require("./cardViewPage");
 
 var ViewerToolbarPage = function () {
 
@@ -334,6 +335,7 @@ var ViewerToolbarPage = function () {
     };
 
     this.clickCloseButton = function () {
+        Util.waitUntilElementIsVisible(closeButton);
         closeButton.click();
     };
 
