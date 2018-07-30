@@ -138,8 +138,8 @@ describe('Content Services Viewer', () => {
         contentServicesPage.checkAcsContainer();
 
         viewerPage.viewFile(pdfFile.name);
-
-        browser.driver.sleep(3000); // wait open file
+		browser.driver.sleep(3000); // wait open file
+        viewerPage.checkZoomInButtonIsDisplayed();
 
         viewerPage.checkFileContent('1', pdfFile.firstPageText);
         viewerPage.checkCloseButtonIsDisplayed();
@@ -159,6 +159,7 @@ describe('Content Services Viewer', () => {
 
     it('[C260040] Should be able to change pages and zoom when .pdf file is open', () => {
         viewerPage.viewFile(pdfFile.name);
+        viewerPage.checkZoomInButtonIsDisplayed();
 
         viewerPage.checkFileContent('1', pdfFile.firstPageText);
         viewerPage.clickNextPageButton();
@@ -187,6 +188,8 @@ describe('Content Services Viewer', () => {
 
     it('[C260042] Should be able to download, open full-screen and Info container from the Viewer', () => {
         viewerPage.viewFile(jpgFile.name);
+        viewerPage.checkZoomInButtonIsDisplayed();
+
         viewerPage.checkImgContainerIsDisplayed();
 
         viewerPage.checkFullScreenButtonIsDisplayed();
@@ -202,6 +205,8 @@ describe('Content Services Viewer', () => {
 
     it('[C260052] Should display image, toolbar and pagination when opening a .jpg file', () => {
         viewerPage.viewFile(jpgFile.name);
+        viewerPage.checkZoomInButtonIsDisplayed();
+
         viewerPage.checkImgContainerIsDisplayed();
 
         viewerPage.checkCloseButtonIsDisplayed();
@@ -220,6 +225,8 @@ describe('Content Services Viewer', () => {
 
     it('[C260483] Should be able to zoom and rotate image when .jpg file is open', () => {
         viewerPage.viewFile(jpgFile.name);
+        viewerPage.checkZoomInButtonIsDisplayed();
+
         viewerPage.checkPercentageIsDisplayed();
 
         zoom = viewerPage.getZoom();
@@ -244,6 +251,8 @@ describe('Content Services Viewer', () => {
 
     it('[C279922] Should display first page, toolbar and pagination when opening a .ppt file', () => {
         viewerPage.viewFile(pptFile.name);
+        viewerPage.checkZoomInButtonIsDisplayed();
+
         viewerPage.checkFileContent('1', pptFile.firstPageText);
         viewerPage.checkCloseButtonIsDisplayed();
         viewerPage.checkFileThumbnailIsDisplayed();
@@ -256,11 +265,13 @@ describe('Content Services Viewer', () => {
         viewerPage.checkZoomInButtonIsDisplayed();
         viewerPage.checkZoomOutButtonIsDisplayed();
         viewerPage.checkScalePageButtonIsDisplayed();
+
         viewerPage.clickCloseButton();
     });
 
     it('[C260053] Should display first page, toolbar and pagination when opening a .docx file', () => {
         viewerPage.viewFile(docxFile.name);
+        viewerPage.checkZoomInButtonIsDisplayed();
 
         viewerPage.checkFileContent('1', docxFile.firstPageText);
         viewerPage.checkCloseButtonIsDisplayed();
@@ -312,6 +323,7 @@ describe('Content Services Viewer', () => {
 
         browser.driver.sleep(3000); // wait open file
 
+        viewerPage.checkZoomInButtonIsDisplayed();
         viewerPage.checkFileContent('1', pdfFile.firstPageText);
         viewerPage.checkThumbnailsBtnIsDisplayed();
         viewerPage.clickThumbnailsBtn();
@@ -338,6 +350,7 @@ describe('Content Services Viewer', () => {
 
     it('[C268105] Should display current thumbnail when getting to the page following the last visible thumbnail', () => {
         viewerPage.viewFile(pdfFile.name);
+        viewerPage.checkZoomInButtonIsDisplayed();
 
         viewerPage.checkFileContent('1', pdfFile.firstPageText);
         viewerPage.checkThumbnailsBtnIsDisplayed();
@@ -357,6 +370,7 @@ describe('Content Services Viewer', () => {
 
         viewerPage.checkThumbnailsBtnIsDisabled();
 
+        viewerPage.checkCloseButtonIsDisplayed();
         viewerPage.clickCloseButton();
     });
 
@@ -365,6 +379,7 @@ describe('Content Services Viewer', () => {
 
         browser.driver.sleep(3000); // wait open file
 
+        viewerPage.checkZoomInButtonIsDisplayed();
         viewerPage.checkPasswordDialogIsDisplayed();
         viewerPage.checkPasswordSubmitDisabledIsDisplayed();
 

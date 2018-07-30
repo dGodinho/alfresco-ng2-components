@@ -60,6 +60,8 @@ var ViewerToolbarPage = function () {
     var activeTab = element(by.css("div[class*='mat-tab-label-active']"));
     var uploadNewVersionButton = element(by.css("input[data-automation-id='upload-single-file']"));
     var rightChevron = element(by.css("div[class*='header-pagination-after']"));
+    var toolbar = element.all(by.css("adf-toolbar.adf-toolbar")).last();
+    var datatableHeader = element(by.css("div.adf-datatable-header"))
 
     this.canvasHeight = function () {
         var deferred = protractor.promise.defer();
@@ -107,8 +109,16 @@ var ViewerToolbarPage = function () {
         passwordInput.sendKeys(password);
     };
 
+    this.checkDatatableHeaderIsDisplayed = function () {
+        Util.waitUntilElementIsVisible(datatableHeader);
+    }
+
     this.checkPageCanvasIsDisplayed = function () {
         Util.waitUntilElementIsVisible(pageCanvas);
+    };
+
+    this.checkToolbarIsDisplayed = function (timeout) {
+        Util.waitUntilElementIsVisible(toolbar, timeout);
     };
 
     this.checkViewerIsNotDisplayed = function () {
@@ -203,6 +213,10 @@ var ViewerToolbarPage = function () {
 
     this.checkZoomInButtonIsDisplayed = function () {
         Util.waitUntilElementIsVisible(zoomInButton);
+    };
+
+    this.checkZoomInButtonIsDisplayed = function (timeout) {
+        Util.waitUntilElementIsVisible(zoomInButton, timeout);
     };
 
     this.checkZoomInButtonIsNotDisplayed = function () {
@@ -412,7 +426,7 @@ var ViewerToolbarPage = function () {
             .map((element) => element.getAttribute('innerText'))
             .then((texts) => {
                 for (let text of texts) {
-                    if (text === tabName ) {
+                    if (text === tabName) {
                         break;
                     }
                     this.clickRightChevron();
@@ -420,13 +434,13 @@ var ViewerToolbarPage = function () {
             });
     };
 
-    this.clickRightChevron = function() {
+    this.clickRightChevron = function () {
         Util.waitUntilElementIsVisible(rightChevron);
         rightChevron.click();
         return this;
     };
 
-    this.clickOnVersionsTab = function() {
+    this.clickOnVersionsTab = function () {
         this.clickRightChevronToGetToTab('Versions');
         var versionsTab = element(by.cssContainingText("div[id*='mat-tab-label']", "Versions"));
         Util.waitUntilElementIsVisible(versionsTab);
@@ -434,12 +448,12 @@ var ViewerToolbarPage = function () {
         return this;
     };
 
-    this.checkUploadVersionsButtonIsDisplayed = function() {
+    this.checkUploadVersionsButtonIsDisplayed = function () {
         Util.waitUntilElementIsVisible(uploadNewVersionButton);
         return this;
     };
 
-    this.checkVersionIsDisplayed = function(version) {
+    this.checkVersionIsDisplayed = function (version) {
         Util.waitUntilElementIsVisible(element(by.cssContainingText("h4[class*='adf-version-list-item-name']", version)));
         return this;
     };
