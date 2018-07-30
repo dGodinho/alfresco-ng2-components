@@ -176,6 +176,7 @@
     "sass-loader": "6.0.5",
     "script-loader": "0.7.0",
     "scss-bundle": "2.1.0",
+    "selenium-webdriver": "4.0.0-alpha.1",
     "source-map-loader": "0.2.3",
     "style-loader": "0.13.1",
     "systemjs-builder": "0.15.34",
